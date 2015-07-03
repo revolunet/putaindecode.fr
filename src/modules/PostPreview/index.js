@@ -13,10 +13,19 @@ export default class PostPreview extends Component {
 
   static propTypes = {
     post: PropTypes.object,
+    onTagClick: PropTypes.func,
+  }
+
+  static defaultProps = {
+    onTagClick: () => {},
+  }
+
+  handleTagClick(e) {
+    this.props.onTagClick(e.target.value)
   }
 
   render() {
-    const post = this.props.post
+    const { post, onTagClick } = this.props
     const i18n = this.context.i18n
 
     return (
@@ -40,7 +49,7 @@ export default class PostPreview extends Component {
           {
             post.tags.map(tag => {
               return (
-                <li key={tag} className="putainde-Tag">{tag}</li>
+                <li key={tag} className="putainde-Tag" onClick={ ::this.handleTagClick }>{tag}</li>
               )
             })
           }

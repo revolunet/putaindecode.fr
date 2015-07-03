@@ -20,18 +20,16 @@ export default class Posts extends DefaultTemplate {
   }
 
   render() {
-    const posts = this.props.collections.posts.filter(
-      (v, i) => typeof i === "number"
-    )
+    const { file, metadata, collections } = this.props
 
     return (
       <Html>
         <Head
-          title={this.props.file.title}
-          stylesheets={this.props.metadata.assets.stylesheets}
+          title={ file.title }
+          stylesheets={ metadata.assets.stylesheets }
         />
         <Body
-          scripts={this.props.metadata.assets.scripts}
+          scripts={ metadata.assets.scripts }
         >
           <div className="r-Grid putainde-Section">
             <div
@@ -44,10 +42,10 @@ export default class Posts extends DefaultTemplate {
             >
               <div className="putainde-Title putainde-Title--home">
                 <h2 className="putainde-Title-text">
-                  {this.props.file.title}
+                  { file.title }
                 </h2>
               </div>
-              <PostsList posts={posts} />
+              <PostsList posts={ collections.posts } />
             </div>
           </div>
         </Body>
