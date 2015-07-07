@@ -2,5 +2,5 @@
 import "./index.css"
 
 if (console && console.info) {
-  console.info("Putain de console !")
+  console.info("Putain de console !");
 }
